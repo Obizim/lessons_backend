@@ -11,4 +11,10 @@ app.get("/lessons", (request, response) => {
   ]);
 });
 
+app.get("/user", (request, response) => {
+    response.json([
+        {email: "user@email.com", password: "mypassword"}
+    ])
+})
+
 app.listen(process.env.APP_PORT || 3000, () => console.log("server is running"));
