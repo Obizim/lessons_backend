@@ -1,5 +1,14 @@
-const express = require('express')
+const express = require("express");
 
-const app = express()
+const app = express();
 
-app.listen(process.env.APP_PORT, () => console.log('server is running'))
+app.get("/lessons", (request, response) => {
+  response.json([
+    { topic: "Web-based Mobile App Development", location: "Hendon", price: 100 },
+    { topic: "Business Intelligence", location: "Colindale", price: 80 },
+    { topic: "Strategic Information Systems", location: "Brent Cross", price: 90 },
+    { topic: "Advanced Web Development with Big Data", location: "Golders Green", price: 120 },
+  ]);
+});
+
+app.listen(process.env.APP_PORT || 3000, () => console.log("server is running"));
