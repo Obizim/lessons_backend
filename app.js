@@ -20,4 +20,4 @@ app.get("/user", (request, response) => {
     ])
 })
 
-app.listen(process.env.APP_PORT || 3000, () => console.log("server is running"));
+app.listen(process.env.APP_PORT || 3000, () => console.log(`Server is running on ${process.env.APP_PORT || 3000}: http://localhost:${process.env.APP_PORT || 3000}`));
