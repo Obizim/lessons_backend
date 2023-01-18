@@ -2,7 +2,7 @@
   "name": "coursework-2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "serve": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
