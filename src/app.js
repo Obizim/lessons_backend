@@ -1,23 +1,33 @@
 const express = require("express");
 const cors = require("cors");
+const db = require('./db/mongodb')
+
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.use(cors())
+const client = db.connectToServer();
+// const dbConnect = await db.connect()
 
-app.get("/lessons", (request, response) => {
-  response.json([
-    { topic: "Web-based Mobile App Development", location: "Hendon", price: 100 },
-    { topic: "Business Intelligence", location: "Colindale", price: 80 },
-    { topic: "Strategic Information Systems", location: "Brent Cross", price: 90 },
-    { topic: "Advanced Web Development with Big Data", location: "Golders Green", price: 120 },
-  ]);
+app.get("/lessons", async (req, res) => {
+  const dbConnect = db.getDb();
+  dbConnect.collection("listingsAndReviews")
+    .find({}).limit(50)
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send("Error fetching listings!");
+     } else {
+      console.log(result);
+        res.json(result);
+      }
+    });
 });
 
-app.get("/user", (request, response) => {
-    response.json([
-        {email: "user@email.com", password: "mypassword"}
-    ])
-})
+app.get("/order", (req, res) => {
+  
+});
 
-app.listen(process.env.APP_PORT || 3000, () => console.log(`Server is running on ${process.env.APP_PORT || 3000}: http://localhost:${process.env.APP_PORT || 3000}`));
+app.listen(process.env.APP_PORT || 3000, () =>
+  console.log(`Server is running on 3000`)
+);
