@@ -20,8 +20,7 @@ module.exports = {
  
       dbConnection = db.db(databaseName);
       console.log("Successfully connected to MongoDB.");
- 
-    //   return callback();
+      return callback;
     });
   },
  
