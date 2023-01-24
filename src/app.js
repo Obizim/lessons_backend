@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require('morgan')
 require('dotenv').config()
+const path = require('path')
 const connection = require('./db/mongodb')
 
 
@@ -10,7 +11,21 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors());
 
-// db.connectToServer();
+
+var staticPath = path.join(__dirname, "static");
+app.use(express.static(staticPath));
+
+// app.use('/lesson-images', (req, res, next) => {
+//   express.static(lessonImagesPath, {fallthrough: false})(req, res, next);
+// }).on('error', function(err) {
+//   if (err.status === 404) {
+//     res.status(404).send({ error: 'Image file not found' });
+//   } else {
+//     next(err);
+//   }
+// });
+
+
 app.get("/lessons", async (req, res) => {
   const db = await connection()
   db.collection("lessons")

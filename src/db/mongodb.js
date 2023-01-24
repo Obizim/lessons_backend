@@ -1,8 +1,8 @@
-const {MongoClient} = require('mongodb')
+const {MongoClient, ServerApiVersion} = require('mongodb')
 
-const url = "mongodb://127.0.0.1:27017/"
+const url = process.env.MONGO_URL_CONNECTION
 const databaseName = 'lessons-app'
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
 const connection = async () => {
