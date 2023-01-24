@@ -12,19 +12,8 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 
-var staticPath = path.join(__dirname, "static");
+const staticPath = path.join(__dirname, "public/images");
 app.use(express.static(staticPath));
-
-// app.use('/lesson-images', (req, res, next) => {
-//   express.static(lessonImagesPath, {fallthrough: false})(req, res, next);
-// }).on('error', function(err) {
-//   if (err.status === 404) {
-//     res.status(404).send({ error: 'Image file not found' });
-//   } else {
-//     next(err);
-//   }
-// });
-
 
 app.get("/lessons", async (req, res) => {
   const db = await connection()
