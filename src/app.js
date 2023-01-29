@@ -43,7 +43,7 @@ app.put("/lessons/:id", async (req, res) => {
   const db = await connection();
   db.collection("lessons").updateOne(
     { _id: ObjectId(req.params.id) },
-    { $inc: { spaces: -req.params.spaces } },
+    { $inc: { spaces: -(req.body.spaces)} },
     (err, result) => {
       if(err) res.status(400).send();
       res.send(result)
