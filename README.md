@@ -1,8 +1,7 @@
-# groupwork-2
+## Coursework 2
 
-- Github Link for express app: https://github.com/Obizim/groupwork-2
-Github 
+- Github Link for express app: https://github.com/Obizim/lessons_backend
 
-- Github Link for vue app: https://github.com/Obizim/groupwork
+- Github Link for vue app: https://github.com/Obizim/lessons-vue
 
-- Guthub Pages Link for vue app: https://obizim.github.io/groupwork
+- Github Pages Link for vue app: https://obizim.github.io/lessons-vue/
