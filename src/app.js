@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.use(cors());
 
+const port = process.env.PORT || 3000
 const staticPath = path.join(__dirname, "public/images");
 app.use(express.static(staticPath));
 
@@ -59,6 +60,6 @@ app.post("/order", async (req, res) => {
   });
 });
 
-app.listen(process.env.APP_PORT || 3000, () =>
-  console.log(`Server is running on 3000`)
+app.listen(port, () =>
+  console.log(`Server is running on ${port}`)
 );
