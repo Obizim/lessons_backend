@@ -60,6 +60,10 @@ app.post("/order", async (req, res) => {
   });
 });
 
+app.use((req,res) => {
+  res.status(404).send('Resource not found!')
+})
+
 app.listen(port, () =>
   console.log(`Server is running on ${port}`)
 );
